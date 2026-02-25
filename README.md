@@ -10,57 +10,58 @@ Este proyecto es una aplicación en **Java** que permite crear y gestionar criat
 
 ---
 
-## 🧠 ¿Qué hace este programa?
+## 🎮 Funcionamiento general
 
-Al ejecutar la clase `Main`, el programa:
+1. Se solicita crear un **jugador**: login, contraseña y correo.  
+2. Se muestra un **menú interactivo** para:  
+   - Crear criaturas  
+   - Hacer comer o descansar a una criatura  
+   - Iniciar una pelea entre criaturas  
+   - Mostrar características de una criatura  
+   - Mostrar datos del jugador  
+   - Salir del programa  
 
-1. Solicita al usuario **login, contraseña y correo** para crear un jugador.
-2. Muestra un **menú interactivo por consola** con las siguientes opciones:
-   - Crear una criatura: Orco, Enano o Elfo.
-   - Hacer que una criatura **coma**.
-   - Hacer que una criatura **descanse**.
-   - Realizar una **lucha entre dos criaturas**.
-   - Mostrar las **características de una criatura**.
-   - Mostrar los **datos del jugador**.
-   - Salir del programa.
+Todas las acciones se muestran por pantalla mediante mensajes claros.
 
 ---
 
-## 📋 Descripción de las clases
+## 🧱 Clases principales
 
 ### 👤 `Jugador.java`
-
-Guarda los datos del jugador:
-
-- Login
-- Contraseña
-- Correo
-
-Muestra esta información cuando se solicita en el menú.
-
----
+- Login, contraseña y correo del jugador.  
+- Métodos para mostrar la información del jugador.
 
 ### 🐲 `Criatura.java` (clase base)
-
-Representa una criatura con atributos como nombre y define métodos comunes:
-
-- `comer()`: devuelve un mensaje indicando que la criatura ha comido.
-- `descansar()`: devuelve un mensaje indicando que la criatura descansa.
-- `pelear(Criatura, Criatura)`: simula una pelea genérica entre criaturas y devuelve el resultado.
-- Método `toString()` para mostrar las características de la criatura.
-
----
-
-### 🪓 `Orco.java`, ⚔️ `Enano.java`, 🧝 `Elfo.java`
-
-Estas clases heredan de `Criatura.java` y **sobrescriben métodos** para personalizar el comportamiento de cada tipo de criatura (por ejemplo, mensajes específicos para comer, descansar y pelear).
+- Atributo: nombre de la criatura.  
+- Métodos:
+  - `comer()`: acción genérica de alimentación.  
+  - `descansar()`: acción genérica de descanso.  
+  - `pelear(Criatura c1, Criatura c2)`: método para simular lucha entre criaturas.  
+  - `toString()`: devuelve las características de la criatura.
 
 ---
 
-## 🎮 Ejecución del programa
+## 🧬 Tipos de criaturas
 
-### 📥 Clonar el repositorio
+Cada criatura hereda de `Criatura` y **sobrescribe los métodos** para personalizar su comportamiento:
+
+| Criatura | Comer | Descansar | Pelear | Características destacadas |
+|----------|------|-----------|--------|---------------------------|
+| **Orco** | Mensaje contundente indicando que se alimenta con fuerza | Recupera energía mostrando fuerza bruta | Mensaje agresivo, lucha con poder y contundencia | Gran fuerza, resistencia alta |
+| **Enano** | Alimentación disciplinada y medida | Recupera energía con resistencia | Lucha equilibrada, basada en fuerza y defensa | Resistente, muy disciplinado |
+| **Elfo** | Alimentación ligera y ágil | Recupera energía con rapidez | Lucha ágil y estratégica | Rápido, inteligente, alto control de movimientos |
+
+---
+
+## ⚔️ Sistema de lucha
+
+- Se seleccionan **dos criaturas** para pelear.  
+- Cada tipo de criatura muestra mensajes propios durante la lucha.  
+- Se determina un resultado basado en la lógica implementada.  
+
+---
+
+## 📥 Clonar el proyecto
 
 ```bash
 git clone https://github.com/adriigege/Ejercicio-Polimorfismo-2.git
-```
