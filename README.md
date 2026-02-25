@@ -58,6 +58,4 @@ Estas clases heredan de `Criatura.java` y **sobrescriben métodos** para persona
 
 ```bash
 git clone https://github.com/adriigege/Ejercicio-Polimorfismo-2.git
-
-javac Main.java model/*.java
-java Main
+```
