@@ -1,6 +1,11 @@
 # Ejercicio Polimorfismo 2
 Ejercicio básico de polimorfismo con sobreescritura de métodos (overriding) hecho por mi, aprendido en el Ciclo Formativo Grado Superior de Desarrollo de Aplicaciones Web (DAW).
 
+![Java](https://img.shields.io/badge/Java-17+-red)
+![POO](https://img.shields.io/badge/Paradigma-POO-blue)
+![Estado](https://img.shields.io/badge/Estado-Completado-brightgreen)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-lightgrey)
+
 Este proyecto es una aplicación en **Java** que permite crear y gestionar criaturas (Orco, Enano y Elfo), haciendo que realicen acciones como comer, descansar, pelear entre ellas y mostrar sus características. Además, guarda los datos de un jugador con login, contraseña y correo electrónico.
 
 ---
