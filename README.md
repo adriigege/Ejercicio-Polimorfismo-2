@@ -1,4 +1,4 @@
-# Ejercicio Polimorfismo 2
+# Ejercicio de Polimorfismo 2
 
 ![Java](https://img.shields.io/badge/Java-17+-red)
 ![POO](https://img.shields.io/badge/Paradigma-POO-blue)
