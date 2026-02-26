@@ -13,135 +13,126 @@ El programa utiliza **polimorfismo** para que cada tipo de criatura tenga un com
 
 ---
 
-## 🧱 Diagrama de herencia conceptual
-    Criatura
-   /    |     \
-Orco   Enano   Elfo
-
-- `Criatura` es la clase base con métodos genéricos.
-- Orco, Enano y Elfo sobrescriben esos métodos para comportamientos específicos.
+       +----------------+
+       |   Jugador      |
+       +----------------+
+       | - login:String |
+       | - password:String |
+       | - correo:String |
+       +----------------+
+       | + toString()   |
+       +----------------+
+              |
+              |
+       +----------------+
+       |   Criatura     |
+       +----------------+
+       | - nombre:String|
+       | - fuerza:int   |
+       | - inteligencia:int |
+       | - velocidad:int|
+       | - energia:int  |
+       +----------------+
+       | + comer()      |
+       | + descansar()  |
+       | + pelear(Criatura,Criatura) |
+       | + toString()   |
+       +----------------+
+      /          |          \
+     /           |           \
+     +--------+ +----+-----+ +----+-----+
+| Orco | | Enano | | Elfo |
++--------+ +----------+ +----------+
+| + comer() | + comer() | + comer()
+| + descansar() | + descansar() | + descansar()
+| + pelear() | + pelear() | + pelear()
++----------------+------------+------------+
 
 ---
 
-## 👤 Jugador.java
+## 👤 Clases y métodos
 
-Representa al jugador que controla todas las criaturas.
+### Jugador.java
+- **Atributos:** login, password, correo  
+- **Métodos:**
+  - `getLogin() / setLogin(String)` → Acceso/modificación del login  
+  - `getPassword() / setPassword(String)` → Acceso/modificación de contraseña  
+  - `getCorreo() / setCorreo(String)` → Acceso/modificación de correo  
+  - `toString()` → Devuelve los datos del jugador  
+
+---
+
+### Criatura.java
+Clase base para todas las criaturas.
 
 **Atributos:**
-
-| Atributo  | Tipo   | Descripción                         |
-|-----------|--------|-------------------------------------|
-| login     | String | Nombre de usuario                    |
-| password  | String | Contraseña del jugador               |
-| correo    | String | Correo electrónico                   |
-
-**Métodos:**
-
-- `getLogin() / setLogin(String)` → Obtiene o modifica el login.  
-- `getPassword() / setPassword(String)` → Obtiene o modifica la contraseña.  
-- `getCorreo() / setCorreo(String)` → Obtiene o modifica el correo.  
-- `toString()` → Devuelve los datos completos del jugador en formato legible.
-
----
-
-## 🐲 Criatura.java
-
-Clase base de la que heredan Orco, Enano y Elfo.
-
-**Atributos principales:**
-
-| Atributo      | Tipo   | Descripción                             |
-|---------------|--------|-----------------------------------------|
-| nombre        | String | Nombre de la criatura                   |
-| fuerza        | int    | Nivel de fuerza (1-10)                  |
-| inteligencia  | int    | Nivel de inteligencia (1-10)            |
-| velocidad     | int    | Nivel de velocidad (1-10)               |
-| energia       | int    | Nivel de energía de la criatura         |
+- nombre: String  
+- fuerza: int  
+- inteligencia: int  
+- velocidad: int  
+- energia: int  
 
 **Métodos:**
-
-- `comer()` → Incrementa la energía y muestra un mensaje indicando que la criatura ha comido.  
-- `descansar()` → Recupera parte de la energía y muestra un mensaje de descanso.  
-- `pelear(Criatura c1, Criatura c2)` → Simula un enfrentamiento entre dos criaturas basándose en sus estadísticas (`fuerza`, `inteligencia`, `velocidad`). Devuelve mensaje con ganador o empate.  
-- `toString()` → Muestra todas las estadísticas y el nombre de la criatura.
-
----
-
-## 🪓 Orco.java
-
-Criatura especializada en fuerza y resistencia.
-
-**Estadísticas aproximadas:**
-
-| Atributo      | Valor promedio |
-|---------------|----------------|
-| Fuerza        | 8-10           |
-| Inteligencia  | 3-5            |
-| Velocidad     | 4-6            |
-| Energía       | 7-10           |
-
-**Comportamiento sobrescrito:**
-
-- `comer()` → Mensaje contundente: "El Orco X devora su comida y recupera energía".  
-- `descansar()` → Mensaje: "El Orco X descansa y recupera fuerza bruta".  
-- `pelear()` → Mensaje de lucha agresiva y cálculo basado en fuerza principalmente.
+- `comer()` → Incrementa energía y muestra mensaje  
+- `descansar()` → Recupera energía y muestra mensaje  
+- `pelear(Criatura c1, Criatura c2)` → Compara estadísticas y devuelve resultado de la pelea  
+- `toString()` → Muestra todas las estadísticas de la criatura  
 
 ---
 
-## ⚔️ Enano.java
+### Orco.java
+- **Fuerza alta, velocidad media, inteligencia baja**  
+- Mensajes personalizados:
+  - Comer: "El Orco X devora su comida y recupera energía"  
+  - Descansar: "El Orco X descansa y recupera fuerza bruta"  
+  - Pelear: mensaje agresivo basado en fuerza  
 
-Criatura equilibrada, con buena resistencia.
+### Enano.java
+- **Equilibrado, resistente, buena defensa**  
+- Mensajes personalizados:
+  - Comer: "El Enano X come cuidadosamente y aumenta su energía"  
+  - Descansar: "El Enano X descansa y se prepara para luchar"  
+  - Pelear: lucha equilibrada, basada en fuerza y defensa  
 
-**Estadísticas promedio:**
-
-| Atributo      | Valor promedio |
-|---------------|----------------|
-| Fuerza        | 6-8            |
-| Inteligencia  | 5-7            |
-| Velocidad     | 4-6            |
-| Energía       | 7-9            |
-
-**Comportamiento sobrescrito:**
-
-- `comer()` → Mensaje: "El Enano X come cuidadosamente y aumenta su energía".  
-- `descansar()` → Mensaje: "El Enano X descansa y se prepara para luchar".  
-- `pelear()` → Lucha equilibrada, basada en fuerza y defensa.
+### Elfo.java
+- **Velocidad e inteligencia alta, fuerza baja**  
+- Mensajes personalizados:
+  - Comer: "El Elfo X come ligero y recupera agilidad"  
+  - Descansar: "El Elfo X descansa y aumenta su destreza"  
+  - Pelear: lucha ágil basada en velocidad e inteligencia  
 
 ---
 
-## 🧝 Elfo.java
+## 🧬 Tabla comparativa de criaturas
 
-Criatura ágil e inteligente.
-
-**Estadísticas promedio:**
-
-| Atributo      | Valor promedio |
-|---------------|----------------|
-| Fuerza        | 4-6            |
-| Inteligencia  | 7-10           |
-| Velocidad     | 8-10           |
-| Energía       | 6-9            |
-
-**Comportamiento sobrescrito:**
-
-- `comer()` → Mensaje: "El Elfo X come ligero y recupera agilidad".  
-- `descansar()` → Mensaje: "El Elfo X descansa y aumenta su destreza".  
-- `pelear()` → Lucha rápida basada en velocidad e inteligencia.
+| Criatura | Fuerza | Inteligencia | Velocidad | Energía | Comportamiento especial |
+|----------|--------|--------------|-----------|---------|------------------------|
+| Orco     | 8-10   | 3-5          | 4-6       | 7-10    | Pelea agresiva, fuerza bruta |
+| Enano    | 6-8    | 5-7          | 4-6       | 7-9     | Pelea equilibrada, resistente |
+| Elfo     | 4-6    | 7-10         | 8-10      | 6-9     | Pelea ágil, inteligente |
 
 ---
 
 ## ⚡ Sistema de lucha
 
-- Se seleccionan dos criaturas.  
-- Cada tipo usa **sus estadísticas y mensajes propios**.  
-- Se calcula un **puntaje de combate** basado en fuerza, inteligencia y velocidad.  
-- Se muestra en pantalla quién gana, quién pierde o si hay empate.
+- Selección de **dos criaturas**  
+- Cada tipo utiliza su comportamiento específico  
+- Calcula **puntaje de combate** combinando fuerza, inteligencia y velocidad  
+- Muestra **resultado y mensajes descriptivos**  
 
 ---
 
-## ▶️ Cómo ejecutar el proyecto
+## ▶️ Cómo ejecutar
 
-### 1️⃣ Clonar el repositorio
+### Clonar repositorio
 
 ```bash
 git clone https://github.com/adriigege/Ejercicio-Polimorfismo-2.git
+```
+[Frame 1] Inicio sesión
+[Frame 2] Menú principal
+[Frame 3] Crear criaturas
+[Frame 4] Acciones (comer/descansar)
+[Frame 5] Pelea entre criaturas
+[Frame 6] Mostrar estadísticas
+[Frame 7] Mostrar datos jugador
