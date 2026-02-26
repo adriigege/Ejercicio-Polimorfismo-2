@@ -15,56 +15,121 @@ El programa utiliza **polimorfismo** para que cada tipo de criatura tenga un com
 
 ## 🎮 Funcionamiento general
 
-1. Se solicita crear un **jugador**: login, contraseña y correo.  
-2. Se muestra un **menú interactivo** para:  
-   - Crear criaturas  
-   - Hacer comer o descansar a una criatura  
-   - Iniciar una pelea entre criaturas  
-   - Mostrar características de una criatura  
-   - Mostrar datos del jugador  
-   - Salir del programa  
+Al iniciar el programa:
 
-Todas las acciones se muestran por pantalla mediante mensajes claros.
+1. Se solicita la creación de un **jugador**, introduciendo:
+   - Login
+   - Contraseña
+   - Correo electrónico
+2. Se muestra un **menú interactivo** por consola que permite:
+   - Crear criaturas
+   - Hacer que una criatura coma
+   - Hacer que una criatura descanse
+   - Enfrentar dos criaturas en una lucha
+   - Mostrar características de una criatura
+   - Mostrar los datos del jugador
+   - Salir del programa
+
+Todas las acciones generan una salida por pantalla describiendo lo que ocurre.
 
 ---
 
-## 🧱 Clases principales
+## 🧱 Descripción de las clases
 
 ### 👤 `Jugador.java`
-- Login, contraseña y correo del jugador.  
-- Métodos para mostrar la información del jugador.
 
-### 🐲 `Criatura.java` (clase base)
-- Atributo: nombre de la criatura.  
+Representa al jugador que controla las criaturas.
+
+Contiene:
+- Login
+- Contraseña
+- Correo electrónico
+
+Incluye métodos para mostrar los datos del jugador cuando se solicitan desde el menú.
+
+---
+
+### 🐲 `Criatura.java`
+
+Clase base que representa una criatura genérica.
+
+Atributos y comportamiento común:
+- Nombre de la criatura
 - Métodos:
-  - `comer()`: acción genérica de alimentación.  
-  - `descansar()`: acción genérica de descanso.  
-  - `pelear(Criatura c1, Criatura c2)`: método para simular lucha entre criaturas.  
-  - `toString()`: devuelve las características de la criatura.
+  - `comer()`
+  - `descansar()`
+  - `pelear(Criatura, Criatura)`
+  - `toString()`
+
+Esta clase sirve como base para los distintos tipos de criaturas, que personalizan su comportamiento.
 
 ---
 
 ## 🧬 Tipos de criaturas
 
-Cada criatura hereda de `Criatura` y **sobrescribe los métodos** para personalizar su comportamiento:
+Cada tipo de criatura hereda de `Criatura` y redefine sus acciones con mensajes propios.
 
-| Criatura | Comer | Descansar | Pelear | Características destacadas |
-|----------|------|-----------|--------|---------------------------|
-| **Orco** | Mensaje contundente indicando que se alimenta con fuerza | Recupera energía mostrando fuerza bruta | Mensaje agresivo, lucha con poder y contundencia | Gran fuerza, resistencia alta |
-| **Enano** | Alimentación disciplinada y medida | Recupera energía con resistencia | Lucha equilibrada, basada en fuerza y defensa | Resistente, muy disciplinado |
-| **Elfo** | Alimentación ligera y ágil | Recupera energía con rapidez | Lucha ágil y estratégica | Rápido, inteligente, alto control de movimientos |
+---
+
+### 🪓 `Orco.java`
+
+Representa una criatura de tipo **Orco**.
+
+Características:
+- Comportamiento más agresivo en combate
+- Mensajes propios al comer y descansar
+
+Acciones:
+- **Comer:** muestra un mensaje indicando que el orco se alimenta de forma contundente.
+- **Descansar:** indica que el orco recupera fuerzas.
+- **Pelear:** muestra un mensaje específico de lucha propio del orco.
+
+---
+
+### ⚔️ `Enano.java`
+
+Representa una criatura de tipo **Enano**.
+
+Características:
+- Criatura resistente y disciplinada
+- Mensajes propios adaptados a su tipo
+
+Acciones:
+- **Comer:** mensaje acorde a la naturaleza del enano.
+- **Descansar:** indica que el enano recupera energía.
+- **Pelear:** muestra una lucha basada en fuerza y resistencia.
+
+---
+
+### 🧝 `Elfo.java`
+
+Representa una criatura de tipo **Elfo**.
+
+Características:
+- Criatura ágil e inteligente
+- Mensajes diferenciados respecto a las otras criaturas
+
+Acciones:
+- **Comer:** mensaje acorde al estilo del elfo.
+- **Descansar:** indica descanso y recuperación.
+- **Pelear:** muestra una lucha basada en rapidez y destreza.
 
 ---
 
 ## ⚔️ Sistema de lucha
 
-- Se seleccionan **dos criaturas** para pelear.  
-- Cada tipo de criatura muestra mensajes propios durante la lucha.  
-- Se determina un resultado basado en la lógica implementada.  
+El programa permite seleccionar **dos criaturas** y enfrentarlas entre sí.
+
+Durante la lucha:
+- Se muestran mensajes descriptivos del enfrentamiento.
+- Se indica el resultado del combate según la lógica implementada.
+- Cada tipo de criatura utiliza su propio mensaje de combate.
 
 ---
 
-## 📥 Clonar el proyecto
+## ▶️ Ejecución del proyecto
+
+### 📥 Clonar el repositorio
 
 ```bash
 git clone https://github.com/adriigege/Ejercicio-Polimorfismo-2.git
