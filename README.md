@@ -13,126 +13,58 @@ El programa utiliza **polimorfismo** para que cada tipo de criatura tenga un com
 
 ---
 
-       +----------------+
-       |   Jugador      |
-       +----------------+
-       | - login:String |
-       | - password:String |
-       | - correo:String |
-       +----------------+
-       | + toString()   |
-       +----------------+
-              |
-              |
-       +----------------+
-       |   Criatura     |
-       +----------------+
-       | - nombre:String|
-       | - fuerza:int   |
-       | - inteligencia:int |
-       | - velocidad:int|
-       | - energia:int  |
-       +----------------+
-       | + comer()      |
-       | + descansar()  |
-       | + pelear(Criatura,Criatura) |
-       | + toString()   |
-       +----------------+
-      /          |          \
-     /           |           \
-     +--------+ +----+-----+ +----+-----+
-| Orco | | Enano | | Elfo |
-+--------+ +----------+ +----------+
-| + comer() | + comer() | + comer()
-| + descansar() | + descansar() | + descansar()
-| + pelear() | + pelear() | + pelear()
-+----------------+------------+------------+
+## 🎮 Funcionamiento general
+
+1. Se solicita crear un **jugador**: login, contraseña y correo.  
+2. Se muestra un **menú interactivo** para:  
+   - Crear criaturas  
+   - Hacer comer o descansar a una criatura  
+   - Iniciar una pelea entre criaturas  
+   - Mostrar características de una criatura  
+   - Mostrar datos del jugador  
+   - Salir del programa  
+
+Todas las acciones se muestran por pantalla mediante mensajes claros.
 
 ---
 
-## 👤 Clases y métodos
+## 🧱 Clases principales
 
-### Jugador.java
-- **Atributos:** login, password, correo  
-- **Métodos:**
-  - `getLogin() / setLogin(String)` → Acceso/modificación del login  
-  - `getPassword() / setPassword(String)` → Acceso/modificación de contraseña  
-  - `getCorreo() / setCorreo(String)` → Acceso/modificación de correo  
-  - `toString()` → Devuelve los datos del jugador  
+### 👤 `Jugador.java`
+- Login, contraseña y correo del jugador.  
+- Métodos para mostrar la información del jugador.
 
----
-
-### Criatura.java
-Clase base para todas las criaturas.
-
-**Atributos:**
-- nombre: String  
-- fuerza: int  
-- inteligencia: int  
-- velocidad: int  
-- energia: int  
-
-**Métodos:**
-- `comer()` → Incrementa energía y muestra mensaje  
-- `descansar()` → Recupera energía y muestra mensaje  
-- `pelear(Criatura c1, Criatura c2)` → Compara estadísticas y devuelve resultado de la pelea  
-- `toString()` → Muestra todas las estadísticas de la criatura  
+### 🐲 `Criatura.java` (clase base)
+- Atributo: nombre de la criatura.  
+- Métodos:
+  - `comer()`: acción genérica de alimentación.  
+  - `descansar()`: acción genérica de descanso.  
+  - `pelear(Criatura c1, Criatura c2)`: método para simular lucha entre criaturas.  
+  - `toString()`: devuelve las características de la criatura.
 
 ---
 
-### Orco.java
-- **Fuerza alta, velocidad media, inteligencia baja**  
-- Mensajes personalizados:
-  - Comer: "El Orco X devora su comida y recupera energía"  
-  - Descansar: "El Orco X descansa y recupera fuerza bruta"  
-  - Pelear: mensaje agresivo basado en fuerza  
+## 🧬 Tipos de criaturas
 
-### Enano.java
-- **Equilibrado, resistente, buena defensa**  
-- Mensajes personalizados:
-  - Comer: "El Enano X come cuidadosamente y aumenta su energía"  
-  - Descansar: "El Enano X descansa y se prepara para luchar"  
-  - Pelear: lucha equilibrada, basada en fuerza y defensa  
+Cada criatura hereda de `Criatura` y **sobrescribe los métodos** para personalizar su comportamiento:
 
-### Elfo.java
-- **Velocidad e inteligencia alta, fuerza baja**  
-- Mensajes personalizados:
-  - Comer: "El Elfo X come ligero y recupera agilidad"  
-  - Descansar: "El Elfo X descansa y aumenta su destreza"  
-  - Pelear: lucha ágil basada en velocidad e inteligencia  
+| Criatura | Comer | Descansar | Pelear | Características destacadas |
+|----------|------|-----------|--------|---------------------------|
+| **Orco** | Mensaje contundente indicando que se alimenta con fuerza | Recupera energía mostrando fuerza bruta | Mensaje agresivo, lucha con poder y contundencia | Gran fuerza, resistencia alta |
+| **Enano** | Alimentación disciplinada y medida | Recupera energía con resistencia | Lucha equilibrada, basada en fuerza y defensa | Resistente, muy disciplinado |
+| **Elfo** | Alimentación ligera y ágil | Recupera energía con rapidez | Lucha ágil y estratégica | Rápido, inteligente, alto control de movimientos |
 
 ---
 
-## 🧬 Tabla comparativa de criaturas
+## ⚔️ Sistema de lucha
 
-| Criatura | Fuerza | Inteligencia | Velocidad | Energía | Comportamiento especial |
-|----------|--------|--------------|-----------|---------|------------------------|
-| Orco     | 8-10   | 3-5          | 4-6       | 7-10    | Pelea agresiva, fuerza bruta |
-| Enano    | 6-8    | 5-7          | 4-6       | 7-9     | Pelea equilibrada, resistente |
-| Elfo     | 4-6    | 7-10         | 8-10      | 6-9     | Pelea ágil, inteligente |
+- Se seleccionan **dos criaturas** para pelear.  
+- Cada tipo de criatura muestra mensajes propios durante la lucha.  
+- Se determina un resultado basado en la lógica implementada.  
 
 ---
 
-## ⚡ Sistema de lucha
-
-- Selección de **dos criaturas**  
-- Cada tipo utiliza su comportamiento específico  
-- Calcula **puntaje de combate** combinando fuerza, inteligencia y velocidad  
-- Muestra **resultado y mensajes descriptivos**  
-
----
-
-## ▶️ Cómo ejecutar
-
-### Clonar repositorio
+## 📥 Clonar el proyecto
 
 ```bash
 git clone https://github.com/adriigege/Ejercicio-Polimorfismo-2.git
-```
-[Frame 1] Inicio sesión
-[Frame 2] Menú principal
-[Frame 3] Crear criaturas
-[Frame 4] Acciones (comer/descansar)
-[Frame 5] Pelea entre criaturas
-[Frame 6] Mostrar estadísticas
-[Frame 7] Mostrar datos jugador
